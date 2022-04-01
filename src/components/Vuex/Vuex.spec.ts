@@ -2,13 +2,13 @@ import { shallowMount } from '@vue/test-utils';
 import Class from './Class.vue';
 import ClassWithModules from './ClassWithModules.vue';
 import Modules from './Modules.vue';
-import Normal from './Normal.vue';
+import Basic from './Basic.vue';
 
-describe('Class.vue', () => {
+describe('Vuex', () => {
   let wrapper;
 
-  it('normal', () => {
-    wrapper = shallowMount(Normal);
+  it('basic', () => {
+    wrapper = shallowMount(Basic);
     expect(wrapper.exists()).toBeTruthy();
   });
 

@@ -1,29 +1,64 @@
-import { shallowMount } from '@vue/test-utils';
-import Class from './Class.vue';
-import ClassWithModules from './ClassWithModules.vue';
-import Modules from './Modules.vue';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Basic from './Basic.vue';
+import Vuex from 'vuex';
+import state from '@/store/state';
+import getters from '@/store/getters';
+import mutations from '@/store/mutations';
+import actions from '@/store/actions';
+import modules from '@/store/modules';
 
 describe('Vuex', () => {
-  let wrapper;
+  let wrapper, store: any;
+  const localVue = createLocalVue();
+  localVue.use(Vuex);
 
-  it('basic', () => {
-    wrapper = shallowMount(Basic);
-    expect(wrapper.exists()).toBeTruthy();
+  describe('real store', () => {
+    beforeEach(() => {
+      store = new Vuex.Store({
+        state,
+        getters,
+        mutations,
+        actions,
+        modules,
+      });
+    });
+
+    it('not using modules', () => {
+      wrapper = shallowMount(Basic, {
+        localVue,
+        store,
+      });
+
+      expect(wrapper.exists()).toBeTruthy();
+    });
+
+    it('using modules', () => {
+      wrapper = shallowMount(Basic, {
+        localVue,
+        store,
+      });
+
+      expect(wrapper.exists()).toBeTruthy();
+    });
   });
 
-  it('modules', () => {
-    wrapper = shallowMount(Modules);
-    expect(wrapper.exists()).toBeTruthy();
-  });
+  describe('mock store', () => {
+    beforeEach(() => {
+      store = new Vuex.Store({
+        state: {},
+        getters: {},
+        mutations: {},
+        actions: {},
+        modules: {},
+      });
+    });
 
-  it('class', () => {
-    wrapper = shallowMount(Class);
-    expect(wrapper.exists()).toBeTruthy();
-  });
+    it('not using modules', () => {
+      expect(1).toBe(1);
+    });
 
-  it('class with modules', () => {
-    wrapper = shallowMount(ClassWithModules);
-    expect(wrapper.exists()).toBeTruthy();
+    it('using modules', () => {
+      expect(1).toBe(1);
+    });
   });
 });

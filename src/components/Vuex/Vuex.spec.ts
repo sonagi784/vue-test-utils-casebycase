@@ -1,5 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Basic from './Basic.vue';
+import Modules from './Modules.vue';
 import Vuex from 'vuex';
 import state from '@/store/state';
 import getters from '@/store/getters';
@@ -23,22 +24,30 @@ describe('Vuex', () => {
       });
     });
 
-    it('not using modules', () => {
+    it('not using modules', async () => {
       wrapper = shallowMount(Basic, {
         localVue,
         store,
       });
 
-      expect(wrapper.exists()).toBeTruthy();
+      expect(wrapper.find('.hello').text()).toBe('hello user! 0');
+      await wrapper.find('.plus').trigger('click');
+      expect(wrapper.find('.hello').text()).toBe('hello user! 1');
     });
 
-    it('using modules', () => {
-      wrapper = shallowMount(Basic, {
+    it('using modules', async () => {
+      wrapper = shallowMount(Modules, {
         localVue,
         store,
       });
 
-      expect(wrapper.exists()).toBeTruthy();
+      expect(wrapper.find('.count').text()).toBe('count: 0');
+      expect(wrapper.find('.getCount').text()).toBe('getCount: 0');
+
+      await wrapper.find('.plus').trigger('click');
+
+      expect(wrapper.find('.count').text()).toBe('count: 1');
+      expect(wrapper.find('.getCount').text()).toBe('getCount: 1');
     });
   });
 

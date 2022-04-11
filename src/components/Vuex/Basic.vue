@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Basic (hello user)</h1>
-    <div>{{ PRINT_HELLO }}</div>
-    <button @click="PLUS_NUMBER">plus 1</button>
+    <div class="hello">{{ PRINT_HELLO }}</div>
+    <button class="plus" @click="PLUS_NUMBER">plus 1</button>
   </div>
 </template>
 

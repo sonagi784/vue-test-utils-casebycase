@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Modules (counter)</h1>
-    <div>count: {{ COUNT }}</div>
-    <div>getCount: {{ GET_COUNT }}</div>
-    <button @click="PLUS_COUNT">plus 1</button>
+    <div class="count">count: {{ COUNT }}</div>
+    <div class="getCount">getCount: {{ GET_COUNT }}</div>
+    <button class="plus" @click="PLUS_COUNT">plus 1</button>
   </div>
 </template>
 

@@ -12,8 +12,8 @@ export default {
     },
   },
   actions: {
-    plusCount({ commit }: any, count?: number) {
-      commit('addCount', count);
+    plusCount({ commit }: any) {
+      commit('addCount');
     },
   },
 };

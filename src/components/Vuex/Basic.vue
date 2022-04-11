@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>Basic (hello user)</h1>
-    <div>{{ printHello }}</div>
-    <button @click="plusNumber">plus 1</button>
+    <div>{{ PRINT_HELLO }}</div>
+    <button @click="PLUS_NUMBER">plus 1</button>
   </div>
 </template>
 
@@ -12,13 +12,13 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapGetters({
-      printHello: 'print_hello',
+      PRINT_HELLO: 'print_hello',
     }),
   },
 
   methods: {
     ...mapActions({
-      plusNumber: 'plusNumber',
+      PLUS_NUMBER: 'plusNumber',
     }),
   },
 };

@@ -52,22 +52,55 @@ describe('Vuex', () => {
   });
 
   describe('mock store', () => {
-    beforeEach(() => {
-      store = new Vuex.Store({
-        state: {},
-        getters: {},
-        mutations: {},
-        actions: {},
-        modules: {},
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it('not using modules', async () => {
+      const print_hello = jest.fn();
+      const plusNumber = jest.fn();
+
+      wrapper = shallowMount(Basic, {
+        localVue,
+        store: new Vuex.Store({
+          getters: {
+            print_hello,
+          },
+          actions: {
+            plusNumber,
+          },
+        }),
       });
+
+      await wrapper.find('.plus').trigger('click');
+      expect(plusNumber).toBeCalled();
     });
 
-    it('not using modules', () => {
-      expect(1).toBe(1);
-    });
+    it('using modules', async () => {
+      const plusCount = jest.fn();
 
-    it('using modules', () => {
-      expect(1).toBe(1);
+      wrapper = shallowMount(Modules, {
+        localVue,
+        store: new Vuex.Store({
+          modules: {
+            counter: {
+              namespaced: true,
+              state: {
+                count: 0,
+              },
+              getters: {
+                getCount: () => 0,
+              },
+              actions: {
+                plusCount,
+              },
+            },
+          },
+        }),
+      });
+
+      await wrapper.find('.plus').trigger('click');
+      expect(plusCount).toBeCalled();
     });
   });
 });

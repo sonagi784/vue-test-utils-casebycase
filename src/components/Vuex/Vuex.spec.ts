@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Basic from './Basic.vue';
 import Modules from './Modules.vue';
 import Vuex from 'vuex';
@@ -10,8 +10,10 @@ import modules from '@/store/modules';
 
 describe('Vuex', () => {
   let wrapper, store: any;
-  const localVue = createLocalVue();
-  localVue.use(Vuex);
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   describe('real store', () => {
     beforeEach(() => {
@@ -26,7 +28,6 @@ describe('Vuex', () => {
 
     it('not using modules', async () => {
       wrapper = shallowMount(Basic, {
-        localVue,
         store,
       });
 
@@ -37,7 +38,6 @@ describe('Vuex', () => {
 
     it('using modules', async () => {
       wrapper = shallowMount(Modules, {
-        localVue,
         store,
       });
 
@@ -61,7 +61,6 @@ describe('Vuex', () => {
       const plusNumber = jest.fn();
 
       wrapper = shallowMount(Basic, {
-        localVue,
         store: new Vuex.Store({
           getters: {
             print_hello,
@@ -80,7 +79,6 @@ describe('Vuex', () => {
       const plusCount = jest.fn();
 
       wrapper = shallowMount(Modules, {
-        localVue,
         store: new Vuex.Store({
           modules: {
             counter: {

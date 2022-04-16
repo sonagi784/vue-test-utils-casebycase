@@ -1,17 +1,28 @@
-import { shallowMount } from '@vue/test-utils';
-import Router from './Router.vue';
-import Mock from './Mock.vue';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import VueRouter from 'vue-router';
+import RouterMain from './RouterMain.vue';
+import { routes } from '@/router';
 
 describe('Vue Router', () => {
   let wrapper;
 
-  it('Router.vue', () => {
-    wrapper = shallowMount(Router);
-    expect(wrapper.exists()).toBeTruthy();
-  });
+  describe('real router', () => {
+    let router: any;
+    const localVue = createLocalVue();
+    localVue.use(VueRouter);
 
-  it('Mock.vue', () => {
-    const wrapper = shallowMount(Mock);
-    expect(wrapper.exists()).toBeTruthy();
+    beforeEach(() => {
+      router = new VueRouter({ routes });
+    });
+
+    it('router push', async () => {
+      wrapper = shallowMount(RouterMain, {
+        localVue,
+        router,
+      });
+
+      await router.push('/about');
+      expect(wrapper.vm.$route.path).toBe('/about');
+    });
   });
 });

@@ -14,14 +14,13 @@ describe('Vue Router', () => {
     beforeEach(() => {
       router = new VueRouter({ routes });
     });
-
     it('router push', async () => {
       wrapper = shallowMount(RouterMain, {
         localVue,
         router,
       });
 
-      await router.push('/about');
+      await router.push({ name: 'About' });
       expect(wrapper.vm.$route.path).toBe('/about');
     });
   });

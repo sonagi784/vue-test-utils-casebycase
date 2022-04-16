@@ -12,6 +12,6 @@ describe('Events.vue', () => {
     const wrapper = shallowMount(Events);
     const emitData = 123;
     await wrapper.find('button').trigger('click');
-    expect(wrapper.emitted().EventWithData[0]).toContain(emitData);
+    expect(wrapper.emitted().EventWithData).toContainEqual([emitData]);
   });
 });

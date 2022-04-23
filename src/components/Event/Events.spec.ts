@@ -5,7 +5,7 @@ describe('Events.vue', () => {
   it('event emit', async () => {
     const wrapper = shallowMount(Events);
     await wrapper.find('button').trigger('click');
-    expect(wrapper.emitted().Event).toBeTruthy();
+    expect(wrapper.emitted()).toHaveProperty('Event');
   });
 
   it('event emit with data', async () => {

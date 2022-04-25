@@ -19,4 +19,15 @@ describe('Methods.vue', () => {
     await wrapper.find('button').trigger('click');
     expect(spy).toBeCalled();
   });
+
+  it('use method option (deprecated in VTU 2)', async () => {
+    const onClickMethod = jest.fn();
+    const wrapper = shallowMount(Methods, {
+      methods: {
+        onClickMethod,
+      },
+    });
+    await wrapper.find('button').trigger('click');
+    expect(onClickMethod).toBeCalled();
+  });
 });

@@ -4,7 +4,7 @@
   </SlotComponent>
 </template>
 
-<script lang="ts">
+<script>
 import SlotComponent from './SlotComponent.vue';
 export default {
   components: {

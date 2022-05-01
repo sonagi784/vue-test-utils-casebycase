@@ -1,21 +1,20 @@
 # vue-test-utils-casebycase
 
+Vue Test Utils 3 (Vue 2)
+typescript 4
+jest 26
+
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
 ### Run your unit tests
+```
+npm run test:unit
+```
+
+## Test on save
 ```
 npm run test:unit
 ```
@@ -24,6 +23,3 @@ npm run test:unit
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

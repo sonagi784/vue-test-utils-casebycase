@@ -1,8 +1,11 @@
 # vue-test-utils-casebycase
 
 Vue Test Utils 3 (Vue 2)
+
+jest 24
+
 typescript 4
-jest 26
+
 
 ## Project setup
 ```

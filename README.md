@@ -13,7 +13,7 @@ typescript 4
 npm install
 ```
 
-### Run unit tests
+## Run unit tests
 
 ```
 npm run test:unit

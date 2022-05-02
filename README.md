@@ -8,21 +8,25 @@ typescript 4
 
 
 ## Project setup
+
 ```
 npm install
 ```
 
-### Run your unit tests
+### Run unit tests
+
 ```
 npm run test:unit
 ```
 
 ## Test on save
+
 ```
-npm run test:unit
+npm run test:unit-watch
 ```
 
-### Lints and fixes files
+## launch dev server
+
 ```
-npm run lint
+npm run serve
 ```

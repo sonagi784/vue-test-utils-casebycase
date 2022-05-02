@@ -2,8 +2,19 @@ import { shallowMount } from '@vue/test-utils';
 import WebAPI from './WebAPI.vue';
 
 describe('WebAPI.vue', () => {
-  it('', () => {
+  const mockReload = jest.fn();
+  Object.defineProperty(window, 'location', {
+    configurable: true,
+    value: { reload: mockReload },
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('location.reload', async () => {
     const wrapper = shallowMount(WebAPI);
-    expect(wrapper.exists()).toBeTruthy();
+    await wrapper.find('button').trigger('click');
+    expect(mockReload).toBeCalled();
   });
 });

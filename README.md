@@ -25,7 +25,7 @@ npm run test:unit
 npm run test:unit-watch
 ```
 
-## launch dev server
+## Launch dev server
 
 ```
 npm run serve

@@ -1,11 +1,6 @@
 # vue-test-utils-casebycase
 
-Vue Test Utils 3 (Vue 2)
-
-jest 24
-
-typescript 4
-
+vue-test-utils (for vue.js 2) Component Test Example
 
 ## Project setup
 

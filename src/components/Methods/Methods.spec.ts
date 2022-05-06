@@ -4,7 +4,7 @@ import MethodsClassComp from './MethodsClassComp.vue';
 
 describe('Methods.vue', () => {
   it('method mocks in Object component', async () => {
-    const spy = jest.spyOn(Methods.methods, 'onClickMethod');
+    const spy = jest.spyOn((Methods as any).methods, 'onClickMethod');
     const wrapper = shallowMount(Methods);
     await wrapper.find('button').trigger('click');
     expect(spy).toBeCalled();
